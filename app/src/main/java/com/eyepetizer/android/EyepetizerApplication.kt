@@ -41,6 +41,7 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer
 class EyepetizerApplication : Application() {
 
     init {
+        //使用了SmartRefreshLayout开源库，这里是设置全局的，还有xml设置方式和代码设置方式，优先级递增
         //底层声明了一个接口作为参数，在这里可以直接使用lamda表达式作为参数传入，可以理解为一个匿名内部类（但有一些不同？）
         //这里可以直接用SmartRefreshLayout是因为他是一个静态方法去做配置，配置信息保存在类级别而不是对象级别中。
         SmartRefreshLayout.setDefaultRefreshInitializer { context, layout ->
@@ -50,7 +51,7 @@ class EyepetizerApplication : Application() {
 
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
             layout.setEnableHeaderTranslationContent(true)
-            MaterialHeader(context).setColorSchemeResources(R.color.blue, R.color.blue, R.color.blue)
+            MaterialHeader(context).setColorSchemeResources(R.color.blue, R.color.blue, R.color.blue)//不同阶段显示的颜色
         }
 
         SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
