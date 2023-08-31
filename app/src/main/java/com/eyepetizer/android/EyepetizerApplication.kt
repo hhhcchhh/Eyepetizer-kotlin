@@ -41,6 +41,8 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer
 class EyepetizerApplication : Application() {
 
     init {
+        //底层声明了一个接口作为参数，在这里可以直接使用lamda表达式作为参数传入，可以理解为一个匿名内部类（但有一些不同？）
+        //这里可以直接用SmartRefreshLayout是因为他是一个静态方法去做配置，配置信息保存在类级别而不是对象级别中。
         SmartRefreshLayout.setDefaultRefreshInitializer { context, layout ->
             layout.setEnableLoadMore(true)
             layout.setEnableLoadMoreWhenContentNotFull(true)
