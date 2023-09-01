@@ -58,6 +58,7 @@ class EyepetizerApplication : Application() {
             layout.setEnableFooterTranslationContent(true)
             layout.setFooterHeight(153f)
             layout.setFooterTriggerRate(0.6f)
+            //静态成员属于类，可以在实例化之前先设置，设置引脚没内容加载时显示什么
             NoStatusFooter.REFRESH_FOOTER_NOTHING = GlobalUtil.getString(R.string.footer_not_more)
             NoStatusFooter(context).apply {
                 setAccentColorId(R.color.colorTextPrimary)
@@ -66,8 +67,19 @@ class EyepetizerApplication : Application() {
         }
     }
 
+    //ContextWrapper 类的一个方法，允许您在 Context 对象创建之前对其进行初始化和自定义。
+    /*
+    多语言支持: 您可以在应用中切换不同的语言，而不需要重新启动应用。这通常涉及到在 attachBaseContext 中替换 Resources 对象，以便在运行时更改应用的语言。
+
+字体大小和样式: 您可以在 attachBaseContext 中修改 Context 对象以应用自定义字体大小和样式，以满足用户的可访问性需求。
+
+主题切换: 根据用户的主题偏好，您可以在 attachBaseContext 中设置不同的主题。
+
+安全性: 在某些情况下，您可能需要在 attachBaseContext 中对 Context 进行安全性验证或其他自定义初始化。
+    * */
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
+        //启用应用程序的分包（Multidex）支持,确保您的应用在使用大型依赖或库时能够正确运行
         MultiDex.install(this)
     }
 
