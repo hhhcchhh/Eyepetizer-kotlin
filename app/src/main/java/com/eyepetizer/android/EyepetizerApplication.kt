@@ -51,7 +51,8 @@ class EyepetizerApplication : Application() {
 
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
             layout.setEnableHeaderTranslationContent(true)
-            MaterialHeader(context).setColorSchemeResources(R.color.blue, R.color.blue, R.color.blue)//不同阶段显示的颜色
+            //不同阶段显示的颜色
+            MaterialHeader(context).setColorSchemeResources(R.color.blue, R.color.blue, R.color.blue)
         }
 
         SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
@@ -87,6 +88,15 @@ class EyepetizerApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         context = this
+        //BuildConfig 类是在编译过程中由 Android Gradle 插件根据 build.gradle 文件的配置自动生成的。
+        // BuildConfig 类包含了一些与项目构建相关的常量和设置。
+        /*包括
+        DEBUG：一个 boolean 类型的常量，用于表示当前构建的类型是调试构建还是发布构建。
+        APPLICATION_ID：一个 String 类型的常量，表示当前应用的包名。
+        VERSION_NAME：一个 String 类型的常量，表示当前应用的版本名称。
+        VERSION_CODE：一个整数类型的常量，表示当前应用的版本号。
+        FLAVOR：一个 String 类型的常量，表示当前构建的 “flavor”（即变体）、渠道或产品风格。
+         */
         IjkPlayerManager.setLogLevel(if (BuildConfig.DEBUG) IjkMediaPlayer.IJK_LOG_WARN else IjkMediaPlayer.IJK_LOG_SILENT)
         WebViewActivity.DEFAULT_URL.preCreateSession()
         if (!SplashActivity.isFirstEntryApp && DialogAppraiseTipsWorker.isNeedShowDialog) {
