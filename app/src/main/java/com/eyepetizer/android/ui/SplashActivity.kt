@@ -49,11 +49,15 @@ class SplashActivity : BaseActivity() {
     private val alphaAnimation by lazy {
         AlphaAnimation(0.5f, 1.0f).apply {
             duration = splashDuration
-            fillAfter = true
+            fillAfter = true    //设置视图是否保存最后的状态
         }
     }
 
     private val scaleAnimation by lazy {
+        //第五个参数 (Animation.RELATIVE_TO_SELF) 指定了 X 缩放的参考点，这里是相对于视图自身的中心点。
+        //第六个参数 (0.5f) 指定了 X 缩放的参考点相对于视图宽度的位置，0.5 表示中心点。
+        //第七个参数 (Animation.RELATIVE_TO_SELF) 指定了 Y 缩放的参考点，也是相对于视图自身的中心点。
+        //第八个参数 (0.5f) 指定了 Y 缩放的参考点相对于视图高度的位置，同样是中心点。
         ScaleAnimation(1f, 1.05f, 1f, 1.05f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f).apply {
             duration = splashDuration
             fillAfter = true
