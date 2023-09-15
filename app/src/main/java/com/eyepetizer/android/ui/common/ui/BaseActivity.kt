@@ -43,6 +43,7 @@ import java.lang.ref.WeakReference
  * @author vipyinzhiwei
  * @since  2020/4/29
  */
+//不需要警告在清单文件中未注释
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
 
@@ -140,11 +141,12 @@ open class BaseActivity : AppCompatActivity() {
         setupViews()
     }
 
+    //绑定标题栏内容设置监听实现跑马灯
     protected open fun setupViews() {
         val navigateBefore = findViewById<ImageView>(R.id.ivNavigateBefore)
         val tvTitle = findViewById<TextView>(R.id.tvTitle)
         navigateBefore?.setOnClickListener { finish() }
-        tvTitle?.isSelected = true  //获取焦点，实现跑马灯效果。
+        tvTitle?.isSelected = true  //获取焦点，实现跑马灯效果。 //好像没有实现？
 
     }
 
@@ -157,7 +159,13 @@ open class BaseActivity : AppCompatActivity() {
      * 设置状态栏背景色
      */
     open fun setStatusBarBackground(@ColorRes statusBarColor: Int) {
-        ImmersionBar.with(this).autoStatusBarDarkModeEnable(true, 0.2f).statusBarColor(statusBarColor).fitsSystemWindows(true).init()
+        //ImmersionBar管理 Android 应用程序的状态栏样式和行为
+        //启用自动根据状态栏背景颜色来调整状态栏文本颜色的功能
+        //设置状态栏的背景颜色
+        //启用状态栏与内容视图的内容入侵
+        //初始化 ImmersionBar 对象，应用上述设置。
+        ImmersionBar.with(this).autoStatusBarDarkModeEnable(true, 0.2f)
+            .statusBarColor(statusBarColor).fitsSystemWindows(true).init()
     }
 
     /**

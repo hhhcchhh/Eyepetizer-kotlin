@@ -44,17 +44,19 @@
             android:name="notch.config"
             android:value="portrait|landscape" />
 
+<!--        exported设置可以被外部调用-->
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
             android:theme="@style/Eyepetizer.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+<!--        当这些配置更改发生时，Activity 不会重新创建，而是会调用 onConfigurationChanged() 方法来处理这些更改。
+键盘键盘的可用性或状态、键盘的可见性、屏幕方向、屏幕尺寸或密度、屏幕布局参数、设备的最小屏幕尺寸、UI 模式（日间模式和夜间模式）-->
         <activity
             android:name=".ui.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"

@@ -38,7 +38,7 @@ import kotlinx.coroutines.*
  * @since  2020/5/15
  */
 class SplashActivity : BaseActivity() {
-
+    //为了避免在视图初始化之前调用binding
     private var _binding: ActivitySplashBinding? = null
 
     private val binding: ActivitySplashBinding
@@ -86,6 +86,7 @@ class SplashActivity : BaseActivity() {
         isFirstEntryApp = false
     }
 
+    //使用PermissionX库请求外部存储权限
     private fun requestWriteExternalStoragePermission() {
         PermissionX.init(this@SplashActivity).permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             .onExplainRequestReason { scope, deniedList ->

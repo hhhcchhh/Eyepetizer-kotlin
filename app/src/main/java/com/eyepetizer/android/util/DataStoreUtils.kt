@@ -59,6 +59,11 @@ import java.io.IOException
  * 描述：DataStore 工具类
  *
  */
+
+//DataStore 允许您以异步、类型安全的方式存储和检索键值对数据，而无需担心数据一致性和线程安全性问题。
+// 它是一个强大的工具，用于处理应用程序的持久化数据需求，包括用户首选项、设置和其他需要持久化的数据。
+//通过 DataStore，您可以更加安全和可靠地管理应用程序的数据，
+// 并且它适用于 Kotlin 的协程，使得异步操作变得更加方便。
 object DataStoreUtils {
 
     @Suppress("UNCHECKED_CAST")

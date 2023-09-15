@@ -31,7 +31,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
-
+//kotlin的类默认是非静态的，kotlin鼓励使用对象（实例）来封装状态和行为
+//所以所有创建的类都是需要通过初始化实例来访问的
 /**
  * 应用程序全局的通用工具类，功能比较单一，经常被复用的功能，应该封装到此工具类当中，从而给全局代码提供方面的操作。
  *
